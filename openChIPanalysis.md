@@ -35,11 +35,11 @@ library(clusterProfiler)
 
 k562peaks <-lapply(c("pS5_ENCFF060MMW.bed", "pS2_ENCFF951KHS.bed", "BRCA1_ENCFF620FIH.bed"), readPeakFile, header=FALSE)
 
-promoter <- getPromoters(TxDb=txdb, upstream=1000, downstream=1000)
+promoter <- getPromoters(TxDb=txdb, upstream=3000, downstream=3000)
 
 K562tagMatrix <- lapply(k562peaks, getTagMatrix, windows=promoter)
 
-K562compareTSS <- plotAvgProf(K562tagMatrix, xlim=c(-1000, 1000))  +
+K562compareTSS <- plotAvgProf(K562tagMatrix, xlim=c(-3000, 3000))  +
   scale_color_manual(values = c("blue", "red", "green"))
 
 K562compareTSS                    
@@ -52,7 +52,7 @@ HepG2peaks <-lapply(c("pS5_HepG2.bed", "pS2_HepG2.bed", "BRCA1_HepG2.bed"), read
 
 HepG2tagMatrix <- lapply(HepG2peaks, getTagMatrix, windows=promoter)
 
-HepG2compareTSS <- plotAvgProf(HepG2tagMatrix, xlim=c(-1000, 1000))  +
+HepG2compareTSS <- plotAvgProf(HepG2tagMatrix, xlim=c(-3000, 3000))  +
   scale_color_manual(values = c("blue", "red", "green"))
 
 HepG2compareTSS                    
